@@ -60,7 +60,13 @@ def get_response(intents_list, intents_json):
 
 # 
 while True:
-    user_input = input("You: ") # get user input
+    # obtain user input for further processing
+    user_input = input("You: ") 
+    
+    # end chatbot session if user_input contains "exit"
+    if user_input.lower() == "exit":
+        break
+    
     ints = predict_intents(user_input) # call predict_intents function to determine 
     res = get_response(ints, intents)
-    print('Chatbot: ', res)
+    print("Chatbot: ", res)

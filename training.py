@@ -23,7 +23,7 @@ intents = json.loads(open('intents.json').read())
 words = []
 classes = []
 documents = []
-ignore_letters = ['?', ',', '!', '.']
+ignore_characters = ['?', ',', '!', '.']
 
 # iterate through intents.json to access patterns and responses for user input
 for intent in intents['intents']:
@@ -35,7 +35,7 @@ for intent in intents['intents']:
             classes.append(intent['tag'])
 
 # iterate words list and initialize lemmatizer to break down to its NLP root meaning -- if the word is not contained in ignored_characters
-words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]
+words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_characters]
 words = sorted(set(words))
 classes = sorted(set(classes))
 
